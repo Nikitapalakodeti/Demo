@@ -1,9 +1,9 @@
 version: 2
- 
+
 sources:
-  - name: demo_sources
+  - name: sports
     description: Demo source tables from data lake
-    database:  |
+    database: |
       {%- if  target.name == "dev" -%} SQL_PRACTICE
       {%- elif target.name == "qa"  -%} SQL_PRACTICE
       {%- elif target.name == "uat"  -%} SQL_PRACTICE
@@ -13,4 +13,5 @@ sources:
     schema: SPORTS
     tables:
       - name: teams
-        description: Customized purchase order data with line-level details
+      - name: players
+      - name: game_stats
