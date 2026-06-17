@@ -1,2 +1,2 @@
 select *
-from {{ ref('intr_player_season_stats') }}
+from {{ ref('intr_player_summary') }}

@@ -1,7 +1,6 @@
 select
     team_id,
-    upper(trim(team_name)) as team_name,
-    upper(trim(city)) as city,
-    upper(trim(conference)) as conference,
-    upper(trim(division)) as division
+    trim(team_name) as team_name,
+    trim(city) as city,
+    trim(conference) as conference
 from {{ source('sports', 'teams') }}
