@@ -1,8 +1,9 @@
 select
     player_id,
+    trim(player_name) as player_name,
     team_id,
+    trim(position) as position,
     age,
     salary,
-    trim(player_name) as player_name,
-    trim(position) as position
+    last_updated
 from {{ source('sports', 'players') }}
