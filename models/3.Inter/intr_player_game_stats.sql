@@ -22,8 +22,8 @@ select
     gs.pra,
     gs.fantasy_score
 
-from {{ ref('stg_game_stats') }} gs
-left join {{ ref('stg_players') }} p
+from {{ ref('stg_game_stats') }} as gs
+left join {{ ref('stg_players') }} as p
     on gs.player_id = p.player_id
-left join {{ ref('stg_teams') }} t
+left join {{ ref('stg_teams') }} as t
     on p.team_id = t.team_id

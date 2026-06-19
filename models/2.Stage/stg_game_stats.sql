@@ -14,10 +14,6 @@ select
     + coalesce(rebounds, 0)
     + coalesce(assists, 0) as pra,
 
-    coalesce(points, 0)
-    + coalesce(rebounds, 0)
-    + coalesce(assists, 0)
-    + coalesce(steals, 0)
-    + coalesce(blocks, 0) as fantasy_score
+    {{ fantasy_score() }} as fantasy_score
 
 from {{ source('sports', 'game_stats') }}
