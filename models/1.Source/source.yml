@@ -9,3 +9,4 @@ sources:
       - name: teams
       - name: players
       - name: game_stats
+      - name: PERSON_SOURCE_CSV
