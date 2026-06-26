@@ -43,4 +43,4 @@ models:
       {%- elif target.name == "prod" -%} PROD_DATALAKE
       {%- else -%} invalid_database
       {%- endif -%}
-    +schema: SPORTS
+
