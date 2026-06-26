@@ -1,12 +1,18 @@
 version: 2
-
 sources:
   - name: sports
-    description: Demo source tables from data lake
-    database: SQL_PRACTICE
+    description: SCD1/SCD2 hybrid project source objects
+    database: |
+      {%- if target.name == "dev" -%} DEV_DATALAKE
+      {%- elif target.name == "qa" -%} QA_DATALAKE
+      {%- elif target.name == "uat" -%} UAT_DATALAKE
+      {%- elif target.name == "prod" -%} PROD_DATALAKE
+      {%- else -%} invalid_database
+      {%- endif -%}
     schema: SPORTS
     tables:
-      - name: teams
-      - name: players
-      - name: game_stats
       - name: PERSON_SOURCE_CSV
+        description: Source person/member data
+
+      - name: PERSON_SEQ
+        description: Sequence used to generate unique_id

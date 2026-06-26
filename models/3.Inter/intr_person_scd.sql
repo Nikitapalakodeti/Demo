@@ -1,5 +1,5 @@
 select
-    id as source_person_key,
+    source_person_key,
     memberid,
     memberidshort,
     employer_id,
@@ -15,4 +15,4 @@ select
     last_name,
     email_address,
     phone_number
-from {{ source('sports', 'PERSON_SOURCE_CSV') }}
+from {{ ref('stg_person') }}
