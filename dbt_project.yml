@@ -6,7 +6,7 @@ version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'default'
+profile: 'newprofile'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -36,6 +36,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   demo:
-    # Applies to all files under models/example/
-    
-    +materialized: view
+    +database: |
+      {%- if target.name == "dev" -%} DEV_DATALAKE
+      {%- elif target.name == "qa" -%} QA_DATALAKE
+      {%- elif target.name == "uat" -%} UAT_DATALAKE
+      {%- elif target.name == "prod" -%} PROD_DATALAKE
+      {%- else -%} invalid_database
+      {%- endif -%}
+    +schema: SPORTS
